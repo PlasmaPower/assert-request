@@ -1,0 +1,33 @@
+{
+  "name": "assert-request",
+  "version": "1.0.0",
+  "description": "Assert responses to HTTP requests",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha $(find test -name '*.js')",
+    "test-cov": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha $(find test -name '*.js')"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PlasmaPower/assert-request.git"
+  },
+  "keywords": [
+    "http",
+    "request",
+    "assert",
+    "testing"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PlasmaPower/assert-request/issues"
+  },
+  "homepage": "https://github.com/PlasmaPower/assert-request#readme",
+  "dependencies": {
+    "methods": "^1.1.2",
+    "request-promise": "^2.0.1"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5"
+  }
+}
