@@ -1,6 +1,6 @@
 {
   "name": "assert-request",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Assert responses to HTTP requests",
   "main": "lib/index.js",
   "scripts": {

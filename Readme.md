@@ -23,12 +23,10 @@ describe('/example', function () {
 
 describe('/api', function () {
   it('should return the correct JSON', function () {
-    return request('/api', function () {
-      return request.post('/api')
-        .type('application/json')
-        .status(200)
-        .json(json => json.foo && json.bar);
-    });
+    return request.post('/api')
+      .type('application/json')
+      .status(200)
+      .json(json => json.foo && json.bar);
   });
 });
 ```
