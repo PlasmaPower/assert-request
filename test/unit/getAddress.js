@@ -16,25 +16,25 @@ describe('getAddress', function () {
   it('should get a IPv4 address from a server', function () {
     assert.equal(getAddress({
       address: () => ({ family: 'IPv4', address: '127.0.0.1', port: '1234' })
-    }), 'http://127.0.0.1:1234');
+    }), 'http://localhost:1234');
   });
 
   it('should get a IPv6 address from a server', function () {
     assert.equal(getAddress({
       address: () => ({ family: 'IPv6', address: '::', port: '1234' })
-    }), 'http://[::]:1234');
+    }), 'http://localhost:1234');
   });
 
   it('should accept a HTTP server', function () {
-    assert(/^http:\/\/.*:\d+$/.test(getAddress(exampleHttpServer)));
+    assert(/^http:\/\/localhost:\d+$/.test(getAddress(exampleHttpServer)));
   });
 
   it('should accept a HTTPS server', function () {
-    assert(/^https:\/\/.*:\d+$/.test(getAddress(exampleHttpsServer)));
+    assert(/^https:\/\/localhost:\d+$/.test(getAddress(exampleHttpsServer)));
   });
 
   it('should accept an already started HTTP server', function () {
-    assert(/^http:\/\/.*:\d+$/.test(getAddress(exampleHttpServer.listen())));
+    assert(/^http:\/\/localhost:\d+$/.test(getAddress(exampleHttpServer.listen())));
   });
 
   after(function (done) {
