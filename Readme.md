@@ -59,9 +59,12 @@ Strings and Numbers will be checked without strict matching (`==` not `===`) so 
 
 Asserts that the response status is 200. Equivalent to `.status(200)`
 
-### .header(header, value)
+### .header(header, value, allHeaders)
 
 Asserts that the header is present, and if value is specified, asserts that it is equal to the value.
+In some edge cases like `Set-Cookie`, the header value is an array.
+In this case, by default all headers must match the value.
+However, if someHeaders is true, then only one must match the value.
 Value can be a String, Function, or RegExp.
 
 ### .body(expected)

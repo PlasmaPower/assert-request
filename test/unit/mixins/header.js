@@ -68,4 +68,23 @@ describe('header mixin', function () {
       .catch(err => err)
       .then(err => assert(err instanceof Error));
   });
+
+  it('should do nothing if every header matches', function () {
+    return headerMixin
+      .apply(Promise.resolve({ headers: { 'set-cookie': ['abc', 'abc example'] } }), ['Set-Cookie', /^abc/])
+      .then(res => assert(res && res.headers));
+  });
+
+  it('should throw an error if a header does not match', function () {
+    return headerMixin
+      .apply(Promise.resolve({ headers: { 'set-cookie': ['abc', 'example'] } }), ['Set-Cookie', /^abc/])
+      .catch(err => err)
+      .then(err => assert(err instanceof Error));
+  });
+
+  it('should do nothing if some headers do not match but sosmeHeaders is true', function () {
+    return headerMixin
+      .apply(Promise.resolve({ headers: { 'set-cookie': ['abc', 'example', 'foobar']} }), ['Set-Cookie', 'example', true])
+      .then(res => assert(res && res.headers));
+  });
 });
