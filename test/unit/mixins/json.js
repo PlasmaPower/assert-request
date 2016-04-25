@@ -12,6 +12,12 @@ describe('json mixin', function () {
     }));
   });
 
+  it('should accept already parsed JSON', function () {
+    return jsonMixin
+      .apply(Promise.resolve({ body: { key: 'value' } }), [{ key: 'value' }])
+      .then(assert);
+  });
+
   it('should accept a RegExp', function () {
     return Promise.all(['{ "key": "value" }'].map(function (body) {
       return jsonMixin
